@@ -38,7 +38,6 @@ You need the following requirements. Store keys and token in secret.
 | PRIVATE_KEY       | Key for your Dokku |
 | DOMAIN_NAME       | Domain to map your subdomain to |
 
-
 ## Output
 
 Your branch should be deployed to `branch_name.yourdomain.com`

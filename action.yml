@@ -2,8 +2,8 @@
 name: Branch Preview
 description: Preview your latest changes on the branch on a sub domain
 branding:
-  icon: 'upload-cloud'  
-  color: 'red'
+  icon: "upload-cloud"
+  color: "red"
 
 runs:
   using: "composite"
