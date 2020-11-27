@@ -1,14 +1,25 @@
-
 name: Branch Preview
 description: Preview your latest changes on the branch on a sub domain
 branding:
-  icon: "upload-cloud"
-  color: "red"
-
+  icon: 'upload-cloud'
+  color: 'red'
+# inputs:
+#   private_key:
+#     description: 'SSH PRIVATE KEY'
+#     required: true
+#   host:
+#     description: 'Host server IP address'
+#     required: true
+#   domain_name:
+#     description: 'Website domain name'
+#     required: true
+#   github_token:
+#     description: 'Github access token'
+#     required: true
 runs:
-  using: "composite"
-  steps: 
-    - run: $GITHUB_ACTION_PATH/script.sh
+  # using: 'docker'
+  # image: 'Dockerfile'
+  using: 'composite'
+  steps:
+    - run: $GITHUB_ACTION_PATH/entrypoint.sh
       shell: bash
-
-

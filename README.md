@@ -1,6 +1,6 @@
 # Branch preview
 
-Enable your branch to be previewed immediately.  
+Enable your branch to be previewed immediately.
 
 ## Usage
 
@@ -23,20 +23,22 @@ jobs:
       - name: Preview Branch
         uses: sapiderman/branch-preview-action@v1
         env:
-          PRIVATE_KEY: ${{ secrets.DOKKU_KEY }}  
-          HOST: ${{ secrets.HOST }}  
-          DOMAIN_NAME: ${{ secrets.DOMAIN }}  
-```  
+          PRIVATE_KEY: ${{ secrets.DOKKU_KEY }}
+          HOST: ${{ secrets.HOST }}
+          DOMAIN_NAME: ${{ secrets.DOMAIN }}
+```
 
 ## Inputs
 
 You need the following requirements. Store keys and token in secret.
 
-| Requirement       | Description |
-| :---------------- | :-------------------------------------------: |  
-| HOST              | You need a Dokku Host to push your branch to  |
-| PRIVATE_KEY       | Key for your Dokku |
-| DOMAIN_NAME       | Domain to map your subdomain to |
+| Requirement  |                 Description                  |
+| :----------- | :------------------------------------------: |
+| HOST         | You need a Dokku Host to push your branch to |
+| PRIVATE_KEY  |              Key for your Dokku              |
+| DOMAIN_NAME  |       Domain to map your subdomain to        |
+| GITHUB_TOKEN |              Your github token               |
+| REPOSITORY   |            your github repository            |
 
 ## Output
 
