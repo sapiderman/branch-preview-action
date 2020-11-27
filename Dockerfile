@@ -1,9 +1,13 @@
-FROM nginx:1.19-alpine
+FROM node:12
 
-COPY public/ /var/www/html
+WORKDIR /usr/src/action
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY package*.json ./
 
-EXPOSE 80
+RUN npm ci
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY . .
+
+RUN chmod +x ./entrypoint.sh
+
+ENTRYPOINT ["/usr/src/action/entrypoint.sh"]
