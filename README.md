@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Preview Branch
-        uses: sapiderman/branch-preview@v1
+        uses: sapiderman/branch-preview-action@v1
         env:
           PRIVATE_KEY: ${{ secrets.DOKKU_KEY }}  
           HOST: ${{ secrets.HOST }}  
