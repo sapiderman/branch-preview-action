@@ -1,4 +1,4 @@
-# Branch preview github action
+# Branch preview
 
 Enable your branch to be previewed immediately.  
 
@@ -28,21 +28,20 @@ jobs:
           DOMAIN_NAME: ${{ secrets.DOMAIN }}  
 ```  
 
-## Requirements
+## Inputs
 
-You need the
+You need the following requirements. Store keys and token in secret.
+
 | Requirement       | Description |
-| :---------------- | :----------: |  
-| Host              | You need a Dokku Host to push your branch to  |
-| Key               | Key for your Dokku |
-| Domain            | Domain to map your subdomain to |
+| :---------------- | :-------------------------------------------: |  
+| HOST              | You need a Dokku Host to push your branch to  |
+| PRIVATE_KEY       | Key for your Dokku |
+| DOMAIN_NAME       | Domain to map your subdomain to |
 
-## Required Inputs
-
-Add the above requirement
 
 ## Output
 
 Your branch should be deployed to `branch_name.yourdomain.com`
 
-
+--
+fork. clone. share.
