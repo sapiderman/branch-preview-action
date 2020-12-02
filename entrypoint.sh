@@ -41,9 +41,4 @@ git fetch --unshallow
 git remote add $APP_NAME "dokku@$HOST:$APP_NAME"
 git push -f $APP_NAME "$CURRENT_BRANCH:master"
 
-# this need nodejs environment to work
-# Creating project tracker for current branch if not exists yet"
-# if [[ $CURRENT_BRANCH != $DEFAULT_BRANCH ]]; then
-#   SCRIPT_PATH=$(dirname "$0")
-#   node "$SCRIPT_PATH/createProject.js" $CURRENT_BRANCH $APP_NAME
-# fi
+
