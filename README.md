@@ -1,10 +1,10 @@
 # Branch preview
 
-Enable your branch to be previewed immediately.
+Preview your latest changes. This GitHub Action deploys your branch to a Dokku instance and automatically assigns it a subdomain. This is an easy way to quickly push your latest changes and share your subdomain url for others to preview.
 
 ## Usage
 
-Add to your .github workflow this action
+Add to your .github workflow the action below.
 
 ```yml
 name: Deploy
@@ -21,28 +21,30 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Preview Branch
-        uses: sapiderman/branch-preview-action@v1
-        env:
+        uses: hyperjumptech/branch-preview@v1
+        with:
           PRIVATE_KEY: ${{ secrets.DOKKU_KEY }}
           HOST: ${{ secrets.HOST }}
           DOMAIN_NAME: ${{ secrets.DOMAIN }}
 ```
 
-## Inputs
+## Requirements
 
-You need the following requirements. Store keys and token in secret.
+You will need a dokku instance and the ssh/private key to push your project to. You will also need a domain already pointing to your dokku.
 
-| Requirement  |                 Description                  |
-| :----------- | :------------------------------------------: |
-| HOST         | You need a Dokku Host to push your branch to |
-| PRIVATE_KEY  |              Key for your Dokku              |
-| DOMAIN_NAME  |       Domain to map your subdomain to        |
-| GITHUB_TOKEN |              Your github token               |
-| REPOSITORY   |            your github repository            |
+## Input
+
+You need the following requirements. Please store keys and tokens in secret.
+
+| Requirement  |                 Description                              |
+| :----------- | :------------------------------------------------------: |
+| HOST         | Dokku Host address (ip) to push your branch to           |
+| DOKKU_KEY    | Private/SSH Key to your Dokku instance                   |
+| DOMAIN       | Domain to map your deployed branches to                  |
 
 ## Output
 
-Your branch should be deployed to `branch_name.yourdomain.com`
+A dokku app is created from your branch name so that branch should be deployed to `branch_name.yourdomain.com`.  
 
 --
 fork. clone. share.

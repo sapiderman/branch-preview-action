@@ -1,13 +1,8 @@
-FROM node:12
+FROM alpine:latest
 
-WORKDIR /usr/src/action
+RUN apk add --no-cache bash git openssh-client
 
-COPY package*.json ./
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-RUN npm ci
-
-COPY . .
-
-RUN chmod +x ./entrypoint.sh
-
-ENTRYPOINT ["/usr/src/action/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
