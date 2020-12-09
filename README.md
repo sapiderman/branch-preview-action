@@ -7,7 +7,7 @@ Preview your latest changes. This GitHub Action deploys your branch to a Dokku i
 Add to your .github workflow the action below.
 
 ```yml
-name: Deploy
+name: Branch Preview
 
 on: push
 
@@ -21,11 +21,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Preview Branch
-        uses: hyperjumptech/branch-preview@v1
+        uses: sapiderman/branch-preview-action@v0.3
         with:
-          PRIVATE_KEY: ${{ secrets.DOKKU_KEY }}
-          HOST: ${{ secrets.HOST }}
-          DOMAIN_NAME: ${{ secrets.DOMAIN }}
+          dokku_key: ${{ secrets.DOKKU_KEY }}
+          host: ${{ secrets.HOST }}
+          domain: ${{ secrets.DOMAIN }}
 ```
 
 ## Requirements
