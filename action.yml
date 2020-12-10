@@ -14,7 +14,7 @@ inputs:
   dokku_key:
     description: this is the ssh/dokku private key that allows pushing to the dokku
     required: true
-  domain:
+  sudomain:
     description: This is the domain to map to
     required: true
   github_token:
@@ -30,5 +30,5 @@ runs:
         DOKKU_KEY: ${{ inputs.dokku_key }}
         HOST: ${{ inputs.host }}
         PORT: $${{ inputs.port }}
-        DOMAIN: ${{ inputs.domain }}
+        DOMAIN: ${{ inputs.sudomain }}
         GITHUB_TOKEN: ${{ inputs.github_token }}

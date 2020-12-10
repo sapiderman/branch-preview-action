@@ -26,7 +26,7 @@ jobs:
           dokku_key: ${{ secrets.DOKKU_KEY }}
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
-          domain: ${{ secrets.DOMAIN }}
+          sudomain: ${{ secrets.DOMAIN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
@@ -42,13 +42,13 @@ You need the following requirements. Please store keys and tokens in secret.
 | :----------- | :----------------------------------------------------------------------------------|  
 | host         | Dokku Host address (ip) to push your branch to                                     |  
 | port         | Port if your ssh into the host is not default 22                                   |  
-| domain       | Domain to map your deployed branches to                                            |  
+| subdomain    | Name which will be used for your subdomain. Can be branch name or dokku appname    |  
 | dokku_key    | Private/SSH Key to your Dokku instance                                             |  
 | github_token | Access token. `secrets.GITHUB_TOKEN`, is provided automatically by github workflow |  
 
 ## Output
 
-A dokku app is created from your branch name so that branch should be deployed to `branch_name.yourdomain.com`.
+A dokku app is created from your branch name so that branch should be deployed to `subdomain.yourdomain.com` where subdomain is a name you define.
 
 --  
 fork. clone. share.
