@@ -23,11 +23,11 @@ else
 fi
 
 echo "Checking if app exists"
-ssh "dokku@$HOST" apps:exists $APP_NAME
+ssh "dokku@$HOST -p $PORT" apps:exists $APP_NAME
 
 if [[ $? != 0 ]]; then
   echo "The app does not exist yet, creating the app"
-  ssh "dokku@$HOST" apps:create $APP_NAME
+  ssh "dokku@$HOST" -p $PORT apps:create $APP_NAME
 fi
 
 echo "Deploying to host"

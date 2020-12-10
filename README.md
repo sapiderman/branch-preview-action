@@ -25,6 +25,7 @@ jobs:
         with:
           dokku_key: ${{ secrets.DOKKU_KEY }}
           host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
           domain: ${{ secrets.DOMAIN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -37,12 +38,13 @@ You will need a dokku instance and the ssh/private key to push your project to. 
 
 You need the following requirements. Please store keys and tokens in secret.
 
-| Requirement  | Description                                                                            |
-| :----------- | :------------------------------------------------------------------------------------- |
-| host         | Dokku Host address (ip) to push your branch to                                         |
-| domain       | Domain to map your deployed branches to                                                |
-| dokku_key    | Private/SSH Key to your Dokku instance                                                 |
-| github_token | Github access token. Just use `secrets.GITHUB_TOKEN`, it's provided by github workflow |
+| Requirement  | Description                                                                        |  
+| :----------- | :----------------------------------------------------------------------------------|  
+| host         | Dokku Host address (ip) to push your branch to                                     |  
+| port         | Port if your ssh into the host is not default 22                                   |  
+| domain       | Domain to map your deployed branches to                                            |  
+| dokku_key    | Private/SSH Key to your Dokku instance                                             |  
+| github_token | Access token. `secrets.GITHUB_TOKEN`, is provided automatically by github workflow |  
 
 ## Output
 
