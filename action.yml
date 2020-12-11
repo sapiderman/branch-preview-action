@@ -1,24 +1,24 @@
-name: Branch Preview
+name: Branch-Preview-TEST-BUDHI
 description: Preview your latest changes on the branch on a sub domain
 branding:
   icon: 'upload-cloud'
   color: 'red'
 inputs:
   host:
-    description: This is your dokku host address to push the branch to
+    description: This is your dokku host address to push the branch to.
     required: true
   port:
     description: If your ssh port into the dokku host is not default 22, set it here.
     required: false
     default: '22'
   dokku_key:
-    description: this is the ssh/dokku private key that allows pushing to the dokku
+    description: This is the ssh/dokku private key that allows pushing to the dokku.
     required: true
   sudomain:
-    description: This is the domain to map to
+    description: This is the sudomain to map your deployment to.
     required: true
   github_token:
-    description: 'Github access token'
+    description: Github access token.
     required: true
 
 runs:

@@ -34,3 +34,9 @@ echo "Deploying to host"
 git fetch --unshallow
 git remote add $APP_NAME "dokku@$HOST:$APP_NAME"
 git push -f $APP_NAME "$CURRENT_BRANCH:master"
+
+echo "debuggings...."
+echo "Port: " $PORT
+echo "Host: " $HOST
+echo "Domain: " $DOMAIN
+echo "appname: " $APP_NAME
