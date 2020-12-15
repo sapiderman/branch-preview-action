@@ -30,5 +30,5 @@ runs:
         DOKKU_KEY: ${{ inputs.dokku_key }}
         HOST: ${{ inputs.host }}
         PORT: $${{ inputs.port }}
-        DOMAIN: ${{ inputs.sudomain }}
+        SUBDOMAIN: ${{ inputs.sudomain }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
