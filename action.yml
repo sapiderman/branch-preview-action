@@ -15,8 +15,8 @@ inputs:
     description: This is the ssh/dokku private key that allows pushing to the dokku.
     required: true
   sudomain:
-    description: This is the sudomain to map your deployment to.
-    required: true
+    description: This is the sudomain to map your deployment to. if not defined, will be your branchname.
+    required: false
   github_token:
     description: Github access token.
     required: true
@@ -29,6 +29,6 @@ runs:
       env:
         DOKKU_KEY: ${{ inputs.dokku_key }}
         HOST: ${{ inputs.host }}
-        PORT: $${{ inputs.port }}
+        PORT: ${{ inputs.port }}
         SUBDOMAIN: ${{ inputs.sudomain }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
