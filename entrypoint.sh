@@ -9,7 +9,7 @@ mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 echo -e "$DOKKU_KEY" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
-ssh-keyscan  "$HOST" >> ~/.ssh/known_hosts
+ssh-keyscan "$HOST" >> ~/.ssh/known_hosts
 
 cd "$GITHUB_WORKSPACE"
 
@@ -26,13 +26,15 @@ echo "Checking if app exists"
 ssh "dokku@$HOST" -p $PORT dokku apps:exists $APP_NAME
 
 if [[ $? != 0 ]]; then
-  echo "The app does not exist yet, creating the app"
+  echo "The app does not exist yet, creating the app: $APP_NAME"
   ssh "dokku@$HOST" -p $PORT dokku apps:create $APP_NAME
 fi
 
 echo "Deploying to host"
 git fetch --unshallow
 git remote add $APP_NAME "dokku@$HOST:$APP_NAME"
+echo "pushing changes to $APP_NAME"
 git push -f $APP_NAME "$CURRENT_BRANCH:master"
+echo "done... thank you."
 
 
