@@ -1,4 +1,4 @@
-name: Branch-Preview-TEST-BUDHI
+name: Branch-Preview-TEST
 description: Preview your latest changes on the branch on a sub domain
 branding:
   icon: 'upload-cloud'
@@ -18,7 +18,7 @@ inputs:
     description: This is the sudomain to map your deployment to. if not defined, will be your branchname.
     required: false
   github_token:
-    description: Github access token.
+    description: Github access token. This is automatically provided by the environment.
     required: true
 
 runs:

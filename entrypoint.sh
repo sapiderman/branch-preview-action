@@ -13,18 +13,19 @@ ssh-keyscan "$HOST" >> ~/.ssh/known_hosts
 
 cd "$GITHUB_WORKSPACE"
 
-DEFAULT_BRANCH=${DEFAULT_BRANCH:-'master'}
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-if [[ $CURRENT_BRANCH == $DEFAULT_BRANCH && -n $SUBDOMAIN ]]; then
+if [[ -v $SUBDOMAIN ]]; then
+
   APP_NAME=$SUBDOMAIN
 else
   APP_NAME=${CURRENT_BRANCH/\//-}
 fi
-echo " *** DEBUG DEBUG ****************** "
+
+echo " *** info *********************** "
 echo " current_branch is: $CURRENT_BRANCH "
-echo " subdomain is     : $SUBDOMAIN "
-echo " default branch is: $DEFAULT_BRANCH "
+echo " usdomain input is: $SUBDOMAIN "
+echo " so applicaiton is: $APP_NAME "
 echo " ********************************** "
 
 
