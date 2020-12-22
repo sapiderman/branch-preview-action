@@ -1,7 +1,7 @@
 
 # CHANGELOG
 
-Highlights the different releases for easy reading.
+Highlights the different releases for easy tracking.
 
 ## Released
 Use this section to tell people about which versions of your project are

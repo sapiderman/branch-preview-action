@@ -28,7 +28,9 @@ jobs:
           port: 22 
           sudomain: myapp
           github_token: ${{ secrets.GITHUB_TOKEN }}
-```
+          github_primary_branch: 'main'
+```  
+
 You can refer to other version, or even the main brance like so:
 
 ```yml
@@ -52,24 +54,29 @@ You need the following requirements. Please store keys and tokens in secret.
 | subdomain    | Name which will be used for your subdomain. Can be branch name or dokku appname  |  
 | dokku_key    | Private/SSH Key to your Dokku instance                                           |  
 | github_token | Access token. `secrets.GITHUB_TOKEN`, is provided automatically by github workflow|  
+| github_primary_branch | (optional) This is your primary git branch, GitHub now defaults to main. set it here |  
 
 ## Output
 
 A `subdomain.your-domain.com` is created on your dokku instance. `subdomain` is either an input you've defined or the name of your branch to deploy.
 
-In dokku's view your `subdomain` is just an app. You can check the list like so: `dokku apps:list` 
+In dokku's view your `subdomain` is just an app. You can check the apps in your dokku by issueing: `dokku apps:list`  
 
 ## Troubleshooting
 
-The best way to troubleshoot is if you are able to push from your local to the dokku. All the rights and keys should work from local.
+The best way to troubleshoot is if you are able to push from your local to the dokku. All the rights and keys should work from local as from GitHub Actions.
+
+On your local check if this works:
 
 `git push mydokku main:master`
 
-where `mydokku` is a remote/upstream git location that you've set using `git remote add mydokku <some address>`.
+Where `mydokku` is your remote dokku location that you've set using `git remote add mydokku <some address>`.
 
-`main` is just your local branch as source, it is the default GitHub primary branch. If your local is also master, it would look ` master:master` in the command above.
+`main` is just your local git branch as source, it is the default GitHub primary branch. If your local is also master, it would look `master:master` in the command above.
 
 If everything works on the local, it should transfer seamlessly in the GitHub Action. If not, look for the difference.
+
+One note on environment secrets. They do not show up as *** in logs, something to note when debugging.
 
 ## Contributing
 
@@ -80,7 +87,6 @@ Find any issues? Feedback? Fork, fix and send the PRs this way!
 1. [changelog](./CHANGELOG.md)
 2. [code of conduct](./code_of_conduct.md)
 3. [LICENSE](./LICENSE)
-
 
 --  
 fork. clone. share.

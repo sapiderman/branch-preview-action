@@ -1,25 +1,29 @@
-name: Branch-Preview-TEST
-description: Preview your latest changes on the branch on a sub domain
+name: Branch-Preview Action
+description: Preview your latest branch changes on a sub domain
 branding:
   icon: 'upload-cloud'
   color: 'red'
 inputs:
   host:
-    description: This is your dokku host address to push the branch to.
+    description: 'This is your dokku host address to push the branch to'
     required: true
   port:
-    description: If your ssh port into the dokku host is not default 22, set it here.
+    description: 'If your ssh port into the dokku host is not default 22, set it here.'
     required: false
     default: '22'
   dokku_key:
-    description: This is the ssh/dokku private key that allows pushing to the dokku.
+    description: 'This is the ssh/dokku private key that allows pushing to the dokku'
     required: true
-  sudomain:
-    description: This is the sudomain to map your deployment to. if not defined, will be your branchname.
-    required: false
+  domain:
+    description: 'This is the domain to map to'
+    required: true
   github_token:
-    description: Github access token. This is automatically provided by the environment.
+    description: 'Github access token'
     required: true
+  github_primary_branch:
+    description: 'Name of your primary branch, some use master, new default is main'
+    required: false
+    default: 'main'
 
 runs:
   using: 'composite'
@@ -30,5 +34,7 @@ runs:
         DOKKU_KEY: ${{ inputs.dokku_key }}
         HOST: ${{ inputs.host }}
         PORT: ${{ inputs.port }}
-        SUBDOMAIN: ${{ inputs.sudomain }}
+        DOMAIN: ${{ inputs.domain }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
+        GITHUB_PRIMARY_BRANCH: ${{ inputs.github_primary_branch }}
+        
