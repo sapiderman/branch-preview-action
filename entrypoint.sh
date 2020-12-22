@@ -26,11 +26,11 @@ echo "APP_NAME defined as $APP_NAME"
 
 
 echo "Checking if app exists"
-ssh "dokku@$HOST" -p "$PORT" dokku apps:exists $APP_NAME
+ssh "dokku@$HOST" -p "$PORT" dokku apps:exists "$APP_NAME"
 
 if [[ $? != 0 ]]; then
   echo "The app does not exist yet, creating the app: $APP_NAME"
-  ssh "dokku@$HOST" -p "$PORT" dokku apps:create $APP_NAME
+  ssh "dokku@$HOST" -p "$PORT" dokku apps:create "$APP_NAME"
 fi
 
 echo "Deploying to host: $HOST"
