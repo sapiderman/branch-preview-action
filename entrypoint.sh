@@ -2,7 +2,7 @@
 
 echo "Starting action"
 
-eval $(ssh-agent -s)
+eval "$(ssh-agent -s)"
 
 echo "Setting up SSH..."
 mkdir -p ~/.ssh
@@ -11,12 +11,12 @@ echo -e "$DOKKU_KEY" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 ssh-keyscan -p "$PORT" "$HOST" >> ~/.ssh/known_hosts
 
-cd "$GITHUB_WORKSPACE"
+cd "$GITHUB_WORKSPACE" || exit
 
 DEFAULT_BRANCH=${DEFAULT_BRANCH:-$GITHUB_MAIN_BRANCH}
-CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-if [[ $CURRENT_BRANCH == $DEFAULT_BRANCH && -n $DOMAIN ]]; then
+if [[ "$CURRENT_BRANCH" == "$DEFAULT_BRANCH" && -n "$DOMAIN" ]]; then
   APP_NAME=$DOMAIN
 else
   APP_NAME=${CURRENT_BRANCH/\//-}
@@ -35,9 +35,9 @@ fi
 
 echo "Deploying to host: $HOST"
 git fetch --unshallow
-git remote add $APP_NAME "dokku@$HOST:$PORT/$APP_NAME"
+git remote add "$APP_NAME" "dokku@$HOST:$PORT/$APP_NAME"
 echo "pushing changes to app:$APP_NAME"
-git push -f $APP_NAME "$CURRENT_BRANCH:master"
+git push -f "$APP_NAME" "$CURRENT_BRANCH:master"
 echo "done... thank you."
 
 
