@@ -26,7 +26,7 @@ jobs:
           dokku_key: ${{ secrets.DOKKU_KEY }}
           host: 111.222.333.444
           port: 22 
-          sudomain: myapp
+          domain: mydomain.com
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_primary_branch: 'main'
 ```  
@@ -51,14 +51,14 @@ You need the following requirements. Please store keys and tokens in secret.
 | :----------- | :--------------------------------------------------------------------------------|  
 | host         | Dokku Host address (ip) to push your branch to                                   |  
 | port         | Port if your ssh into the host is not default 22                                 |  
-| subdomain    | Name which will be used for your subdomain. Can be branch name or dokku appname  |  
+| domain       | Name which will be used for your domain.                                         |  
 | dokku_key    | Private/SSH Key to your Dokku instance                                           |  
 | github_token | Access token. `secrets.GITHUB_TOKEN`, is provided automatically by github workflow|  
 | github_primary_branch | (optional) This is your primary git branch, GitHub now defaults to main. set it here |  
 
 ## Output
 
-A `subdomain.your-domain.com` is created on your dokku instance. `subdomain` is either an input you've defined or the name of your branch to deploy.
+A `subdomain.your-domain.com` is created on your dokku instance. `subdomain` is the current branch other than the primary.
 
 In dokku's view your `subdomain` is just an app. You can check the apps in your dokku by issueing: `dokku apps:list`  
 
